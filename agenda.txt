@@ -1,0 +1,67 @@
+T2TRG 2015-10-31..-11-01 (colocated with IETF94)
+Draft 0.1.4
+Contact: Carsten Bormann <cabo@tzi.org>
+
+Room 304
+InterContinental Yokohama Grand
+1-1 Minatomirai Nishi-Ku
+Yokohama, Japan 200-8522
+
+Slides are at:
+https://github.com/t2trg/2015-ietf94/tree/master/slides
+
+Minutes at:
+http://etherpad.tools.ietf.org:9000/p/notes-ietf-94-t2trg?useMonospaceFont=true&showChat=false
+And scribed at the W3C WoT IRC too:
+http://irc.w3.org/?channels=wot
+
+SATURDAY, October 31, 2015
+
+0900-1830  t2trg: Joint W3C IG WoT/Thing-to-Thing PRG - Room 304
+
+0900-1200 Plenary
+
+  0900-1030 10 Welcome, report from W3C IG WoT meeting
+  1030-1000 11 Herb Wildfeuer: https://tools.ietf.org/html/draft-burgess-promise-iot-arch-00.txt
+(break)
+  1130-1215 12 Ari Keränen: https://tools.ietf.org/html/draft-keranen-t2trg-rest-iot-00
+  1215-1245 13 John Mattsson: https://tools.ietf.org/html/draft-mattsson-core-coap-actuators-00.txt
+
+1300-1420 Plenary
+
+
+  1345-1415 14 jayaraghavendran K: https://tools.ietf.org/html/draft-vasu-core-ace-service-provisioning
+
+  1415-1430 Carsten Bormann: Security Considerations for the IoT --
+            something T2TRG wants to pick up?
+            (https://tools.ietf.org/html/draft-garcia-core-security-06.txt,
+             https://tools.ietf.org/html/draft-he-iot-security-bootstrapping,
+             http://www.ietf.org/mail-archive/web/ace/current/msg01470.html)
+  1430-1500 Yoshiki Ishida: https://tools.ietf.org/html/draft-baba-iot-problems
+  1500-1520 ... preparing breakouts
+
+1520-1830 Breakouts (rooms 304 and 513)
+
+SUNDAY, November 1, 2015
+
+0900-1600  t2trg: Joint W3C IG WoT/Thing-to-Thing PRG - Room 304
+
+0900-1000 Plenary
+
+  0900-0930 Reports from breakouts
+  0930-1000 David Janes, IoTDB: Thing API (remote presentation)
+  1000-1020 Alexander Pelov: COOL update, Carsten Bormann: FETCH draft
+  ....-....  "Bring your own resource"/"Operating Things that have
+            multiple masters/stakeholders" [may need to reschedule]
+
+1020-1200 Breakouts, reconfigured (rooms 304 and 513)
+1300-1600 Plenary
+
+  1300-1500 (plan based on breakout results)
+  1500-1600 RG next steps (all)
+
+WEDNESDAY, November 4, 2015
+
+Room 302 IRTF t2trg Proposed Thing-to-Thing Research Group  - 1030 - 1130
+
+  1030-1130 Report to the IETF
