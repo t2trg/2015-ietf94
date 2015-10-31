@@ -1,0 +1,192 @@
+T2TRG Breakout B 2015-10-31
+
+# Agenda
+
+## What are the output documents?
+
+* Security considerations (see below)
+  * Contributors: Sandeep, Mohit, J, Oliver
+  * Problems and guidelines
+    * Disclaim completeness, focus on main message
+      * Appendices to possibly capture additional points
+  * Terms beyond RFC4949
+    * Terms to avoid
+      * Key management
+      * End-to-end security
+  * draft-garcia
+    * cover whole lifecycle, avoid "media breaks"
+    * Everything security, including ACE
+  * SF's comments
+    * 1 Firmware update
+      * Recovery from errors
+      * Protection of incremental updates
+      * Trust issues in updated devices (posture)
+      * Firmware update as a significant lifecycle event
+      * Owner-initiated vs. vendor-initiated (maybe still owner-confirmed) update
+      * Coping with loss-of-service during update
+      * Distribution of updates
+      * Assembling updates from several sources (vs. "app-store")
+    * 2 Keeping the user in control, visibility/monitoring
+      * Plausible deniability as a vendor objective
+      * Visibility of bootstrapping transactions, operational exchanges
+    * 3 Avoiding device fingerprinting (or any permanent identifiers)
+      * Reduce linkability by using opaque, directed identifiers
+    * 4 transitions in the vendor role
+    * 5 Availability problems (DoS, e.g. as a byproduct of penetration testing)
+      * Posture!
+  * Handing over device ownership
+    * Previous owner retains access to historic data linked to device
+      * Data in the cloud
+      * Data in the device???
+    * Hierarchical ownership
+      * Hotel room scenario
+    * Non-voluntary transfer of ownership
+      * Device stolen, lost
+      * Bankruptcy
+    * De-commissioning, offboarding
+  * Lawful access
+  * Forensic readiness (and third-party verifiability)
+  * Regulation, Compliance
+  * Vendor role, OS provider, app-store provider, OEMs, ODMs, ...
+    * Lifecycle aspects here as well
+  * Cross-domain operation (e.g., between cars)
+  * Proximity vs. connectivity
+  * Owners vs. stakeholders, multi-tenant, ...
+    * per device, as a system
+    * accountability
+  * Security as a pre-requisite to safety
+
+* Survey Security Bootstrapping Approaches
+  * Contributors: Mohit, Carsten
+  * List solutions, reference draft-garcia
+  * Everything security but not covered by ACE
+  * Application security vs. network security
+    * Network bootstrapping as a byproduct of application bootstrapping
+  * Discuss in the context of general pre-operational flows
+  * Set in context of, relate to maintenance, ownership transitions
+  * Terms beyond sec.cons. and RFC4949
+    * pre-operational setup, including discovery
+  * draft-he
+  * possibly solutions documents (6tisch, 6lo, anima), 802.1AR
+  * find "hidden gems" (documents that we want to point to that aren't
+    explicitly *about* bootstrapping)
+  * often: small windows of vulnerability -- acceptability of limited
+    opportunity to exploit (leap of faith/TOFU)
+  * Usability aspects ("zero-touch" etc.)
+  * Per-solution characteristics
+    * Assumptions/Prerequisites
+      * e.g., manufactured with key
+      * out-of-band channels (QR-code, buttons)
+      * usability aspects, user actions required
+      * what is provisioned (network, application; PK vs. SK and how
+        is that used)
+      * bundles, bundling process, bootstrap a bundle
+      * interfaces to shopping systems
+      * peer-to-peer vs. infrastructure-based
+      * Registration, authentication of human users
+        (and cats)
+      * Rebootstrapping, ownership handover
+  * Grouping of solutions? What are the categories?
+
+## Report from W3C
+
+* Oliver reports from W3C IG IoT breakout session
+  * Consensus on landscape of security & privacy means
+    * Extensive toolset available for security & privacy
+    * These tools will not be sufficient, need new tools
+      1. same structure, but maybe shrink it for IoT
+      2. new structure
+    * Most (not all) of these mechanisms need to be standard mechanisms
+    * Distributed systems: lots of prior art; five disciplines:
+      * Privacy
+      * Authorization
+      * Authentication
+      * Secure communications and storage
+      * Provisioning and credentialing
+    * Specific WoT needs:
+      * Physical goods (in additional to digital goods)
+      * Constrained devices
+      * Constrained networks
+      * Not only human users
+      * Not only IT applications
+      * Connectivity, de-perimeterization
+    * Technology generations
+      * Classic (Kerberos, SAML, TLS, ...)
+      * New (OAuth, FIDO, ...)
+      * Future
+    * Standardized vs. DIY
+      * In the web: only TLS is really standardized (OAuth is a zoo)
+
+Mohit: When?
+Oliver: Want draft version by end of January
+dsr: Chartered as work items
+Oliver: Wikis are public... You can read...
+dsr: Moving to a github document
+
+https://www.w3.org/WoT/IG/wiki
+->
+https://www.w3.org/WoT/IG/wiki/Security,_Privacy_and_Resilience
+->
+https://www.w3.org/WoT/IG/wiki/Landscape_of_Security%26Privacy_Means
+->
+https://www.w3.org/WoT/IG/wiki/Design-Time_Security%26Privacy_Means
+
+Will do more privacy and resilience later
+
+How to contribute:
+-- review of the github book (to be created in 4-5 weeks), issue tracker
+-- sending e-mail, comments to be integrated by Oliver
+-- can invite people to the bi-weekly Webex calls, dialling details on
+   the Wiki page... (Technically speaking, you need to be a W3C member
+   or an invited expert).
+
+IIC security call...
+
+New W3C WGs:
+-- strong authentication (as in FIDO)
+-- hardware-based security
+Relationship to web security model
+(Also relevant for Apple-Pay-like security)
+
+## Actuator security
+
+Freshness
+
+-- DTLS (replay protection)
+   does not guard against delay attacks...
+
+-- limited validity time of authorized commands...
+
+Most IoT devices don't have wallclock time
+
+4-way handshake
+1st exchange: get a token
+2nd exchange: use that token
+server provides limited lifetime to that token
+
+-- local clocks on client and server
+-- guarantee some maximum clock skew
+
+1st exchange: get a token and a clock value
+(may be provided as part of some other exchange)
+
+....
+2nd exchange: client updates the clock value
+....
+another 2nd exchange: client updates the clock value again
+
+this works for as long as:
+maximum vulnerability window / clock skew rate
+
+[token, clock value]
+(needs protection)
+May not need to standardize anything beyond this data structure
+
+-- Application requirement
+-- integrate it into protocols
+   -- at which layer?
+"do not put burden on ordinary developers"
+
+Add mostly-offline nodes
+(and challenged channels)
+
