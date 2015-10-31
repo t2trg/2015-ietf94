@@ -101,7 +101,7 @@ Slides: https://github.com/t2trg/2015-ietf94/raw/master/slides/12-ietf94_t2trg-r
 
 ```
       Matthias: "application state" was a good example for conflicts in understanding and naming
-      Jamie: Is "session" the TCP session?
+      Jaime: I guess "Session" is not TCP or UDP session, we should try to avoid reusing terminology, right?
       Matthias: Please provide feedback on exactly such questions and how far specific term are already "occupied" in your community/peers. TODO: improve on "session" term
       Joerg: Also consider physical state that often has its own timing properties and extend the document that way.
       Alex Pelov: REST in the IoT is different from the Web, so the physical state aspect is something new that should be covered.
@@ -124,7 +124,7 @@ Slides: https://github.com/t2trg/2015-ietf94/raw/master/slides/12-ietf94_t2trg-r
       Darshak: Best practices for caches: what and how to cache. Normalizing query order in a cache would help to improve cache hits.
       Ari: TODO: check if query order must be protected; do applications rely on specific orders to distinguish two different resources?
       Carsten: Cache is not allowed to modify URI
-      Jamie: Unclear why different order should resolve to a different resource; CoRE interfaces says something about order.
+      Jaime: Unclear why different order should resolve to a different resource; CoRE interfaces says something about order.
       Ari: Might define an optimization rule that clients should normalize query parameters to optimize caching
       Casten: HTTP SEARCH method, FETCH method for CoAP, PATCH vs iPATCH -- we need to identify what methods we really need.
 ```
@@ -154,17 +154,61 @@ Slides:
       John: See next slide (16)
       Ari: IPSec has similar problems, there should be a solution available to adapt.
       Carsten: Probably nothing there. Most applications define their own mechanism for freshness.
-      Jamie: (?) Communication pattern might tell something about the challenge-response
+      Jaime: (?) Communication pattern might tell something about the challenge-response (use exclusively for some types of actuators).
       
       Carsten: In the Web, usually applications implement mechanism such as challenge-response to resolve security issues. We might want to look at those.
 ```
 
-### 1345-1415 14 jayaraghavendran K: https://tools.ietf.org/html/draft-vasu-core-ace-service-provisioning
-### 1415-1430 Carsten Bormann: Security Considerations for the IoT -- something T2TRG wants to pick up? (https://tools.ietf.org/html/draft-garcia-core-security-06.txt)
-### 1430-1500 Yoshiki Ishida: https://tools.ietf.org/html/draft-baba-iot-problems
-### 1500-1520 ... preparing breakouts
+### 1430-1449 14 jayaraghavendran ("not Vasu" ??? sorry)
+Draft: https://tools.ietf.org/html/draft-vasu-core-ace-service-provisioning <br/>
+Slides: https://github.com/t2trg/2015-ietf94/raw/master/slides/14-Service-Provisioning-for-Constrained-Devices.pdf
+
+- Motivation (RD does not provide service provisioning)
+- Key idea (pre-configured users)
+- Scenarios
+- Resource Control
+
+```
+      Ari: Relation/delta to other work in the ACE working group?
+      not Vasu: This is one approach; there are currently multiple competing approaches in ACE
+      Carsten: Is it something everybody should use, a specific example, or something where others can plug in?
+      not Vasu: The latter, a framework to plug in.
+      Carsten: We saw similar things in data centers. We should look at the configuration servers there to get more insights.
+      Carsten: You are aiming for link relations in the solution? Could became a nice small interface.
+```
+
+### 1449-1502 Security Considerations for the IoT -- something T2TRG wants to pick up? (Carsten)
+Slides: [TBD]
+
+- https://tools.ietf.org/html/draft-garcia-core-security-06 (information still valid? ...)
+- https://tools.ietf.org/html/draft-he-iot-security-bootstrapping-01 (Mohit: The document provides a good initial overview of bootstrapping solutions available for IoT devices. This is useful for application developers making new services. The group should work on a document to overview such bootstrapping solutions including those not included in this document in a more structured fashion. Volunteer for editing the proposed new document.)
+- http://www.ietf.org/mail-archive/web/ace/current/msg01470.html (main topic is software updates, fingerprinting, penetration testing)
+- secdir review (https://www.ietf.org/mail-archive/web/secdir/current/msg06101.html)
+- Look for an editor and turn it into a RG document (Mohit, "not Vasu", and Oliver Pfaff volunteered)
+- Good for reference in security sections of IETF documents
+
+### 1502-1516 Problems in and among industries for the prompt realization of IoT (Yoshiki Ishida)
+Draft: https://tools.ietf.org/html/draft-baba-iot-problems
+
+- Objectives (What are the challenges? ICT vs Things industry)
+- Meeting (interviewed major players)
+- Highlights (door security, acquired data withdrawn later due to privacy policy, configuration of IoT equipment too cumbersome, too many standards, which manufacturer is responsible in case of a system fault, openness requires new design process)
+- Testbed for HEMS (Home Energy Management System) study
+
+```
+      Carsten: Document is useful as input / check list
+```
+
+### 1516-1520 ... preparing breakouts
+
+- 11 REST breakout participants (room 304) (extra points: discuss proxy behavior also in regard to object security)
+- 8 security breakout participants (room 513)
+
+- Dinner at 1930 (Kazuyuki)
 
 ### 1520-1830 Breakouts (rooms 304 and 513)
+
+### 
 
 ## SUNDAY, November 1, 2015
 
@@ -181,4 +225,104 @@ Slides:
 ## WEDNESDAY, November 4, 2015
 
 ### 1030-1130 Report to the IETF
+
+
+
+
+## REST Breakout
+
+### Agenda Items
+
+- W3C and IRTF alignment
+   - What is on the table regarding the W3C Plugfest?
+   - What is relevant for the cookbook?
+   - What are WoT Actions?
+   - Is being paradigm-agnostic favorable? (REST, SOA, etc. bindings)
+- Discuss cookbook
+   - Collection resources (related to CoMI and COOL work, FETCH)
+   - How to model RPC or operations (actions) in REST
+   - HATEOAS (example of Lighting use case, form types) and relation to thing descriptions
+   - Event handling
+   - (Transparent?) translating proxies (e.g., JSON <-> CBOR); seamless IoT - Web
+- PlugREST
+
+### W3C and IRTF Alignment
+
+#### W3C Plugfest
+
+- Specification was a bit late for a meeting in Sunnydale
+- Pre-testing is important: have test instances online
+   - Hosting machines might be required
+   - Usually the "passive" component is set up on a public server by the implementers and its address announced
+   - "Active" component is run locally
+   - Test specification needs to define the entry point and steps
+- Main goal was an API easily understandable by humans; this worked out well (self-describing interface through TD)
+- Next step: machine-understandable
+- Core Interfaces (current version AFAIK): https://github.com/mjkoster/I-D/blob/master/CoRE%20Interfaces/draft-ietf-core-interfaces-04.pdf
+- Separation between Data Model and Semantics and the application protocols (CoAP, MQTT...). For this group, focus on REST.  
+
+- Formal testing for IPv6 helped to do autonomous testing
+   - Tests specified as RFC
+   - Was with a stable specification
+   - See https://rawgit.com/cabo/td-coap4/master/base.html for the CoAP Plugtest
+   - Let's try to agree on common mechanisms for testing for WoT and T2TRG so that it's eventually easy to run tests together
+
+- TD has a tutorial, which was very useful for the Plugfest preparation
+- Where there insights on design decisions?
+   - Specific to TD and model (e.g., atomic actions, relative change)
+
+#### What are Actions?
+
+- Short-running: POST + action result
+- Long-running: POST + new resource as handle with a status representation, is deletable to cancel
+- Mechanism is generic, not application-specific. New resource contains e.g., start time, end time, parameters, etc.
+
+- Also interesting for management
+
+#### Events
+
+- Attribute about frequency of change, so clients know what to expect
+- Mapping to CoAP observe
+- pmin, pmax in core-interfaces
+- Events are also used for bindings to sync two resources
+
+#### Is being paradigm-agnostic favorable? (REST, SOA, etc. bindings)
+
+- Use the abstract concept and then bind to protocols (e.g., either CoAP observe or HTTP something)
+- Could fail to scale since you need very specific models (e.g., targeted state, current state) and it is hard to hide details (Layered System)
+- TD is still very easy and was good to implement a REST-based system
+- Need to see how TD works for non-REST systems -- could become difficult
+- Incentive is to understand what is in-scope and what out-of-scope, can people map TD/REST-appraoch to their non-REST system
+- TD ties to REST by defining the capabilities through properties/resources and state transfer
+
+### Discuss cookbook
+
+- TD vs hypermedia controls
+- Does crawling a RESTful thing result in the TD?
+- TD more like the entry points
+- TD good to describe offered services, but model of these services must be programmed into the clinet
+- HATEOAS on T2TRG document???? (are you looking for http://tools.ietf.org/html/draft-hartke-core-apps ?) Yes, let's put it as reference somewhere please.
+
+#### Collection Resources in the Context of CoMI
+
+- Summary of CoOL (new concept: complex query encoded as CBOR-encoded "Field" option)
+
+Question: should we have compatible "IoT" and "web" worlds or is OK to have app/domain specific proxies?
+- We should aim for compatibility; but we could be able to translate these two in a generic way
+- CBOR does not have to be translated to JSON
+- CoAP FETCH in combination with HTTP SEARCH is an option
+- Importance of idempotency might be decision maker
+
+### PlugREST
+
+- Discuss with interested parties to get started: Johannes, Jaime, Klaus, Matthias, Michael. 
+- Take lessons learned from WoT Plugfest and ETSI Plugtests
+- Take lessons for IPSO/LWM2M interop?
+- Finish preparation and run PlugREST within T2TRG
+- Extend with WoT TD and try to integrate with WoT Plugfest
+- Appears that thing description can be seen as a result of exploring HATEOAS links of system / device
+- The two models are very close to each other, see how one maps to other
+- Need to explore practical use cases to see how close they are
+- Contiunue discussions between meetings to avoid diverging
+- Interim definitely before the next IETF -- joint meeting end of January in France?
 
