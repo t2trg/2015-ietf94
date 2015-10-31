@@ -7,12 +7,12 @@ Slides: https://github.com/t2trg/2015-ietf94/blob/master/slides/00-t2trg-94-welc
 
 - Summary of the focus of the RG
 - W3C WoT IG introduction
-
+```
       Dave Raggett: Are things always physical?
       Carsten: IoT is about connecting physical devices to the Internet ("Internet with Things")
       Dave: WoT is also about abstract services
       Carsten: "Web Things" may refer to virtual proxies
-
+```
 - Areas of interest (REST, state/event duality, distribution, mobile code)
 
       Dave: Scalability not only about number of messages, but also communication patterns and their support by protocols
@@ -42,10 +42,11 @@ Slides: [TBD]
 - Bindings (TD to actual instance, ongoing work -> HATEOAS)
 - W3C Breakout results (TD size, collaborate with Special Data (SDW) WG)
 - Next (security considerations, more non-REST examples (TD is agnostic), more bindings)
-
+```
       Daniel ???: TD JSON available on each device? Is there a standard way to get it from any object?
       Sebastian: Yes, but discovery still work in progress (e.g., latest version of TD).
       Carsten: Let's continue with details in breakout (this was overview)
+```
 
 ### 1026-1030 Report from W3C IG WoT meeting (Joerg, continued)
 
@@ -53,14 +54,39 @@ Slides: [TBD]
 
       Daniel: mDNS is only link-local, would need DNS-SD for other cases
 
-### 1032-10__ Federated Multi-Tenant Service Arch for the IoT (Herb Wildfeuer)
+### 1032-1102 Federated Multi-Tenant Service Arch for the IoT (Herb Wildfeuer)
 Draft: https://tools.ietf.org/html/draft-burgess-promise-iot-arch-00.txt <br/>
 Slides: [TBD]
 
 - Overview (see draft abstract)
 - Things as Service Entitites, but tied to physical device (directly on smart thing, gateway with proprietary devices behind, gateway with sensors/actuators on board, transmitter?)
+```
+      Daniel Lux: Granularity is the thing? (ownership, control)
+      Herb: Yes
+```
+- Multi-tenancy (promise theory)
+- Scale (bottom-up appraoch is key, no centralization, but segmentation)
+- Workspaces (separation of concerns for humans, more than namespaces -> containers and SDN virtual networks)
 
-### 1000-1045 12 Ari Keränen: https://tools.ietf.org/html/draft-keranen-t2trg-rest-iot-00
+```
+      Darshak: Can services run in multiple containers?
+      Herb: Yes (?)
+      Joerg: Workspace boundaries / partitioning are hard to define depending on the use case, e.g., might overlap in smart grid
+      Herb: Depends on the grouping
+      Daniel Lux: Example: In home automation you can share services of sensors (free or micro-payment)
+      Herb: Yes, this concept is close to workspaces
+      Carsten: Context is also a concept for separation of concern, so is bookmarks, social networks -- how do things become aware of other things?
+      Herb: ??
+      Dave: Adapting dynamically is important
+      Daniel ???: SDN appears to be the opposite of (multi-tenancy?)
+      Herb: Would like to see work on service-level architectures
+      Darshak: Promise looks to be related to TD: what function and data to expect from a thing, right?
+      Herb: ~yes
+      Carsten: In security this is often referred to as "trust"
+```
+
+### 1120-11__ 12 Ari Keränen: https://tools.ietf.org/html/draft-keranen-t2trg-rest-iot-00
+
 ### 1100-1130 13 John Mattsson: https://tools.ietf.org/html/draft-mattsson-core-coap-actuators-00.txt
 ### 1130-1200 14 jayaraghavendran K: https://tools.ietf.org/html/draft-vasu-core-ace-service-provisioning
 ### 1300-1315 Carsten Bormann: Security Considerations for the IoT -- something T2TRG wants to pick up? (https://tools.ietf.org/html/draft-garcia-core-security-06.txt)
