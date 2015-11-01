@@ -67,7 +67,7 @@ r  -- Sigcomm 2016 Brazil August (mid-november proposal deadline)
 
 Achilleas Kemos: AIOTI work
 Workshop Wednesday 2015-11-04 in Brussels
-
+(see AK-IoT-T2TRG011115.pdf)
 
 13:00
 Breakout A Room 304
