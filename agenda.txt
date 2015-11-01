@@ -1,5 +1,5 @@
 T2TRG 2015-10-31..-11-01 (colocated with IETF94)
-Draft 0.1.4
+Draft 0.2
 Contact: Carsten Bormann <cabo@tzi.org>
 
 Room 304
@@ -14,6 +14,9 @@ Minutes at:
 http://etherpad.tools.ietf.org:9000/p/notes-ietf-94-t2trg?useMonospaceFont=true&showChat=false
 And scribed at the W3C WoT IRC too:
 http://irc.w3.org/?channels=wot
+Summarized at: http://www.w3.org/2015/10/28-wot-minutes.html
+(start from "IRTF T2T/W3C WoT joint meeting in Yokohama - Day 1")
+and http://www.w3.org/2015/11/01-wot-minutes.html
 
 SATURDAY, October 31, 2015
 
@@ -37,7 +40,7 @@ SATURDAY, October 31, 2015
             (https://tools.ietf.org/html/draft-garcia-core-security-06.txt,
              https://tools.ietf.org/html/draft-he-iot-security-bootstrapping,
              http://www.ietf.org/mail-archive/web/ace/current/msg01470.html)
-  1430-1500 Yoshiki Ishida: https://tools.ietf.org/html/draft-baba-iot-problems
+  1430-1500 15 Yoshiki Ishida: https://tools.ietf.org/html/draft-baba-iot-problems
   1500-1520 ... preparing breakouts
 
 1520-1830 Breakouts (rooms 304 and 513)
@@ -48,20 +51,21 @@ SUNDAY, November 1, 2015
 
 0900-1000 Plenary
 
-  0900-0930 Reports from breakouts
-  0930-1000 David Janes, IoTDB: Thing API (remote presentation)
-  1000-1020 Alexander Pelov: COOL update, Carsten Bormann: FETCH draft
+  0900-0930 Reports from breakouts [A: at the end of minutes.md, B: t2trg-b.mkd]
+  0930-1000 David Janes, IoTDB: Thing API (remote presentation cancelled)
+  1000-1020 16 Alexander Pelov: COOL update
+            17 Carsten Bormann: FETCH draft
   ....-....  "Bring your own resource"/"Operating Things that have
-            multiple masters/stakeholders" [may need to reschedule]
+            multiple masters/stakeholders" (cancelled)
+  1100-1145 Closing Plenary: RG next steps (see Sunday.txt)
 
-1020-1200 Breakouts, reconfigured (rooms 304 and 513)
-1300-1600 Plenary
-
-  1300-1500 (plan based on breakout results)
-  1500-1600 RG next steps (all)
+1300-1600 Breakouts (rooms 304 and 513)
 
 WEDNESDAY, November 4, 2015
 
 Room 302 IRTF t2trg Proposed Thing-to-Thing Research Group  - 1030 - 1130
 
-  1030-1130 Report to the IETF
+  1030-1110 Report to the IETF
+            -- Overview T2TRG
+            -- Proceedings at Joint W3C IG WoT/IRTF T2TRG meeting @IETF94
+  1110-1130 RG charter, Next steps

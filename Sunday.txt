@@ -1,0 +1,74 @@
+2015-11-01
+
+* W3C IG WoT/IRTF T2TRG joint meeting @IETF94
+  notes from pre-lunch plenary
+
+-- charter
+
+   -- deliverables
+
+      Track A:
+
+      -- REST cookbook (limited discussion of HATEOAS)
+         (from draft-keranen-t2trg-rest-iot), design patterns
+
+      -- link types, form types, HATEOAS, REST APIs
+         (from draft-hartke-core-apps)
+
+      -- plugREST
+         -- documents: reference framework, prototype formats/protocols
+            (from lighting usecase, draft-hartke-core-lighting)
+         -- software
+
+      Track B:
+
+      -- security considerations (from draft-garcia)
+      -- bootstrapping survey (from draft-he)
+
+      -- plugREST
+         -- initial testing -> breakout B
+
+    -- milestones
+       -- around Monday January 25th/Tue 26th, France (EURECOM)
+
+       -- weekly activity mid-Nov to mid-Jan
+
+-- meetings
+
+   -- December ETSI meeting
+
+r  -- W3C IG WoT Jan 25th++, France
+
+c  -- IAB workshop on semantic interoperability, possibly February (UK)?
+      (many different organizations and vendors doing schemas)
+
+?  -- (April 12-14 W3C IG WoT, North America, maybe MIT)
+   -- IETF95, April 3-8, Buenos Aires
+
+r  -- Berlin IETF96, July
+      (attract OSS community)
+
+   -- W3C Asia July 12-14
+   -- TPAC September 19th-23rd Lisbon
+
+r  -- Sigcomm 2016 Brazil August (mid-november proposal deadline)
+      submission deadline spring, short papers vs. WIP/poster/demo
+      -> interesting, focus on industry spin
+         make this the focal point for outreach to other communities
+
+   -- Sensys 2016 ?November?
+
+   -- Seoul IETF97, November
+
+
+-- charter
+
+#############################################################################
+
+Achilleas Kemos: AIOTI work
+Workshop Wednesday 2015-11-04 in Brussels
+
+
+13:00
+Breakout A Room 304
+Breakout B Room 513
