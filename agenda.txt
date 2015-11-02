@@ -1,5 +1,5 @@
 T2TRG 2015-10-31..-11-01 (colocated with IETF94)
-Draft 0.2
+Draft 0.2.1
 Contact: Carsten Bormann <cabo@tzi.org>
 
 Room 304
@@ -53,6 +53,7 @@ SUNDAY, November 1, 2015
 
   0900-0930 Reports from breakouts [A: at the end of minutes.md, B: t2trg-b.mkd]
   0930-1000 David Janes, IoTDB: Thing API (remote presentation cancelled)
+            http://www.slideshare.net/dpjanes/semantic-metastandards-will-unlock-iot-interoperability
   1000-1020 16 Alexander Pelov: COOL update
             17 Carsten Bormann: FETCH draft
   ....-....  "Bring your own resource"/"Operating Things that have

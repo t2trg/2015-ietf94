@@ -57,7 +57,7 @@ T2TRG Breakout B 2015-10-31
   * Security as a pre-requisite to safety
 
 * Survey Security Bootstrapping Approaches
-  * Contributors: Mohit, Carsten
+  * Contributors: Mohit, Carsten, Yizhou
   * List solutions, reference draft-garcia
   * Everything security but not covered by ACE
   * Application security vs. network security
@@ -189,4 +189,125 @@ May not need to standardize anything beyond this data structure
 
 Add mostly-offline nodes
 (and challenged channels)
+
+#############################################################################
+
+# Bootstrapping/Onboarding in Lemonbeat
+
+(An example to be used for the bootstrapping survey document.)
+
+https://lists.w3.org/Archives/Public/public-wot-ig/2015Sep/att-0048/RWE_lemonbeat_application_v1_8_draft.pdf
+
+Multicast useful for lighting -- no popcorn effect
+
+Compress IPv6 addresses into one byte
+
+| Cloud | GW | Thing                                                           |
+|-------+----+-----------------------------------------------------------------|
+|       |    | <- multicast to all network controllers                         |
+|       |    | device desc (SGTIN -- global trade item number + serial number) |
+|       |    | (has its own key pair, PK in the cloud, service to include PK)  |
+
+1) GW -> Thing "get public key", device returns raw PK (RSA2048,
+openssl format)
+
+(authorization for the following key transfer requires user
+involvement or cloud involvement)
+
+2) GW sends over network key, encrypted with AES-one-time key, plus AES one-time key
+(RSA weakness -- same data with different PK)
+
+(GW generates new network key on factory reset...)
+[RF; noise is good]
+
+Alternative (Manufacturer might want to blacklist devices):
+Get PK from cloud
+
+No mutual authentication
+Could be your neighbor's gateway (christmas effect), need bundling
+
+Device description says whether cloud-based or user-based onboarding
+is desired (RWE devices don't have user-based)
+
+(There is a shared-secret variant)
+
+80 MHz Cortex-M3, 3.5 s to decrypt RSA-encrypted network key
+
+Inclusion and exclusion each generate factory-reset of the device.
+
+Mohit: looks similar to EAP...
+
+Mohit: "Blacklisting is broken": Cloud can blacklist devices, but if
+the device description can control whether cloud is used, that is broken.
+Daniel: If the thing does not have the PK service, and it is stolen,
+it is no longer useful... (Device has a "secret public key")
+
+[Daniel: IPR disclosure: Shared-key version of this plausible deniability approach is patented]
+
+| Cloud - GW              | GW - Thing                    |
+|                         | < ID                          |
+| < ID + ENC_one(net)     |                               |
+| ENC_dev(ENC_one(net)) > |                               |
+|                         | ENC_dev(ENC_one(net)) + one > |
+|                         |                               |
+
+# Plugfest preparation
+
+E.g., Zigbee's PANA + EAP-TLS for network keying (admission) -- widely tested
+
+Authentication transport protocol, e.g., need relay from link-local address
+
+Network security vs. Application Security
+Pre-operational vs. Operational Security
+
+For the Jan 2016 plugfest, focus on Operational Application Security
+
+* simple to add the DTLS protection
+* focus on authorization, not authentication
+
+Use the security token to decide access
+cf.
+draft-bormann-core-ace-aif-03.txt
+(AIF = authorization for a single entity; a policy would include this
+information for multiple entities)
+
+Open up a menu of "entrances" with or without some of this functionality
+(for testing, *not* for production)
+
+Mechanism in place, define policy appropriate for the various stages
+of testing.
+
+How to associate AIF with a specific access?
+(In HTTP; this would be a RFC6750 bearer token in the HTTP
+"Authorization" header field, as in:      Authorization: Bearer mF_9.B5f-4.1JqM
+Maybe just put the AIF in the equivalent CoAP option, unless the DTLS
+connection already provides the AIF.)
+
+Writing code: Carsten, Dave, Daniel?, Oliver, Robert???
+Baseline: IP over anything
+
+W3C side: Johannes + Oliver will present to IG on [Dave will find out].
+Slideware to be provided for that.
+
+# Charter
+
+* keywords for long-term definition of the charter:
+  understand and evaluate IoT security
+  survey
+  find problems
+  evaluate proposals for solutions
+  reference scenarios
+  gap analysis
+
+(do not write into the charter things like:
+* what is different in IoT
+)
+
+* current set of milestones (initial focus)
+  * the two documents (sec. cons. and bootstrap survey)
+  * plugfest contribution
+
+# Summary
+
+Carsten to send draft slides for the Breakout B report to t2trg@irtf.org tomorrow
 
