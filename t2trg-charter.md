@@ -116,5 +116,6 @@ Initially, T2TRG will work on the following work items:
 * Activities
     * Preparing and running "plugRESTs" (with support from the
       documents above, in cooperation with W3C IG WoT; preparing work
-      on reference and evaluation frameworks)
+      on reference and evaluation frameworks), eventually leading to:
+          * plugRESTs: lessons learned
 
