@@ -40,7 +40,7 @@ A number of areas of interest have been identified:
    considerations)
 - Cooperation with W3C, e.g. on data formats and semantics
 
-More explorative areas of interest include:
+More exploratory areas of interest include:
 
 - Operating Things that have multiple masters/stakeholders (including
   understanding role definitions of devices, owners, operators etc.)
@@ -74,7 +74,7 @@ maintained with the IETF's IoT-related WGs and its IoT directorate.
 
 ## Name, organization
 
-The name Thing-to-Thing Research Group plays on a reminescence to the
+The name Thing-to-Thing Research Group plays on a reminiscence to the
 End-to-End Research Group, which accompanied the evolution of the
 Internet for its first three decades.  (The name is certainly not
 intended to literally exclude the communication of constrained nodes
@@ -93,7 +93,7 @@ way that, say, the DTNRG or the ICNRG have been and are being run.
 
 ## Meetings
 
-Meetings will often take place colocated with IETF meetings, and/or
+Meetings will often take place co-located with IETF meetings, and/or
 with meetings of related organizations such as W3C IG WoT.
 (Organizing Workshops at Research Conferences is also envisioned.)
 
