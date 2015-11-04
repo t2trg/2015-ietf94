@@ -56,7 +56,7 @@ SUNDAY, November 1, 2015
             http://www.slideshare.net/dpjanes/semantic-metastandards-will-unlock-iot-interoperability
   1000-1020 16 Alexander Pelov: COOL update
             17 Carsten Bormann: FETCH draft
-  ....-....  "Bring your own resource"/"Operating Things that have
+  ....-.... 90 "Bring your own resource"/"Operating Things that have
             multiple masters/stakeholders" (cancelled)
   1100-1145 Closing Plenary: RG next steps (see Sunday.txt)
 
