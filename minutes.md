@@ -48,6 +48,8 @@ Slides: [TBD]
       Carsten: Let's continue with details in breakout (this was overview)
 ```
 
+- W3C Breakout results (TD size, collaborate with Special Data (SDW) WG)
+- Next (security considerations, more non-REST examples (TD is agnostic), more bindings)
 ### 1026-1030 Report from W3C IG WoT meeting (Joerg, continued)
 
 - WoT Building Blocks ("BB") (API and bindings, discovery, security)
@@ -155,7 +157,7 @@ Slides:
       Ari: IPSec has similar problems, there should be a solution available to adapt.
       Carsten: Probably nothing there. Most applications define their own mechanism for freshness.
       Jaime: (?) Communication pattern might tell something about the challenge-response (use exclusively for some types of actuators).
-      
+
       Carsten: In the Web, usually applications implement mechanism such as challenge-response to resolve security issues. We might want to look at those.
 ```
 
@@ -208,19 +210,78 @@ Draft: https://tools.ietf.org/html/draft-baba-iot-problems
 
 ### 1520-1830 Breakouts (rooms 304 and 513)
 
-### 
+- See end of page for REST breakout
 
 ## SUNDAY, November 1, 2015
 
 ### 0900-0930 Reports from breakouts
+
+- Summary REST breakout
+- Have PlugREST until December to make decision about joint meeting/testing in January
+- Summary security breakout (https://github.com/t2trg/2015-ietf94/blob/master/t2trg-b.mkd)
+- Unclear if there will be another breakout B today
+
+```
+      Kazuyuki: We should include automotive
+      Carsten: Not the focus, but a use case
+      Fluffy: Processes in W3C are different from IETF such as access to material/drafts, but keep trying to collaborate (?)
+```
+
+### 1000-1026 Alexander Pelov: COOL update
+
+- Motivation (manage constrained nodes similar to classic nodes, YANG model)
+- CoOL (hashes, resource arch, Fields option)
+
+```
+      Daniel Lux: What does module mean? Are 30 bits enough?
+      Alex: groups in the data structure; yes
+      Carsten: Numbered trees, close to SNMP, might be good for constrained devices; Problem: transition from SMI to YANG; want to follow that in constrained environmnets; YANG with XML and XPath not optimal -> CoMI -> CoOL? Useful for applications?
+      Dave: Enterprise IDs to manage subrees, could become a burden to keep going back to the registry
+```
+
+### 1026-1045 Carsten Bormann: FETCH draft
+
+- Queries can become very big, workaround: need to switch to POST, losing GET properties
+- Web tends to use workaround
+- HTTP SEARCH as proper fix: like GET but with body
+- CoAP FETCH similar to SEARCH, cacheable (cache needs to look at request payload), payload has a content format (can be application-specific)
+- Not just a link: need forms to tell clients how to construct request
+- FETCH would go with PATCH to alter resource state
+- Build prototypes to see if this works
+
+```
+      Alex: FETCH and PATCH might obsolete the other methods; (second point?)
+      Carsten: Collections are different and one might want to PUT and DELETE at the same time. This is a special use case and justifies special method
+      Robert: How would Accept work?
+      Carsten: Server needs to understand Content Format of FETCH payload
+      Johannes: How to map GET with query parameters to FETCH?
+      Carsten: Complicated queries can for instance be www-form-urlencoded payload, there are ways of mapping
+```
+
+### 1100-1200 RG next steps (all)
+
+- Charter
+- Deliverables
+   - REST cookbook (draft-keranen-t2trg-iot)
+   - REST link, form types (draft-hartke-core-apps)
+   - Security considerations
+   - Bootstrapping survey
+   - plugREST
+      - Documents (reference framework, prototype formats/protocols, draft-hartke-core-lighting)
+      - Software
+- Milestones
+   - Joint meeting in France, January 25/26th (EURECOM)
+
+
+
+
 ### 0930-1000 David Janes, IoTDB: Thing API (remote presentation)
-### 1000-1020 Alexander Pelov: COOL update, Carsten Bormann: FETCH draft
 ### ....-....  "Bring your own resource"/"Operating Things that have multiple masters/stakeholders" [may need to reschedule]
 
 ### 1020-1200 Breakouts, reconfigured (rooms 304 and 513)
 
 ### 1300-1500 (plan based on breakout results)
-### 1500-1600 RG next steps (all)
+
 
 ## WEDNESDAY, November 4, 2015
 
@@ -250,6 +311,7 @@ Draft: https://tools.ietf.org/html/draft-baba-iot-problems
 
 #### W3C Plugfest
 
+- Tested Thing Description (TD)
 - Specification was a bit late for a meeting in Sunnydale
 - Pre-testing is important: have test instances online
    - Hosting machines might be required
@@ -258,8 +320,6 @@ Draft: https://tools.ietf.org/html/draft-baba-iot-problems
    - Test specification needs to define the entry point and steps
 - Main goal was an API easily understandable by humans; this worked out well (self-describing interface through TD)
 - Next step: machine-understandable
-- Core Interfaces (current version AFAIK): https://github.com/mjkoster/I-D/blob/master/CoRE%20Interfaces/draft-ietf-core-interfaces-04.pdf
-- Separation between Data Model and Semantics and the application protocols (CoAP, MQTT...). For this group, focus on REST.  
 
 - Formal testing for IPv6 helped to do autonomous testing
    - Tests specified as RFC
@@ -294,6 +354,8 @@ Draft: https://tools.ietf.org/html/draft-baba-iot-problems
 - Need to see how TD works for non-REST systems -- could become difficult
 - Incentive is to understand what is in-scope and what out-of-scope, can people map TD/REST-appraoch to their non-REST system
 - TD ties to REST by defining the capabilities through properties/resources and state transfer
+- Core Interfaces (current version AFAIK): https://github.com/mjkoster/I-D/blob/master/CoRE%20Interfaces/draft-ietf-core-interfaces-04.pdf
+- Separation between Data Model and Semantics and the application protocols (CoAP, MQTT...). For this group, focus on REST.
 
 ### Discuss cookbook
 
@@ -302,22 +364,24 @@ Draft: https://tools.ietf.org/html/draft-baba-iot-problems
 - TD more like the entry points
 - TD good to describe offered services, but model of these services must be programmed into the clinet
 - HATEOAS on T2TRG document???? (are you looking for http://tools.ietf.org/html/draft-hartke-core-apps ?) Yes, let's put it as reference somewhere please.
+- TD and hypermedia controls are close, but we need to figure out how to translate and identify white spots
 
 #### Collection Resources in the Context of CoMI
 
-- Summary of CoOL (new concept: complex query encoded as CBOR-encoded "Field" option)
+Question: should we have compatible "IoT" and "web" worlds or is it okay to have app/domain specific proxies?
 
-Question: should we have compatible "IoT" and "web" worlds or is OK to have app/domain specific proxies?
+- Summary of CoOL (new concept: complex query encoded as CBOR-encoded "Field" option)
 - We should aim for compatibility; but we could be able to translate these two in a generic way
 - CBOR does not have to be translated to JSON
+- CBOR is still application-agnostic (no domain knowledge)
 - CoAP FETCH in combination with HTTP SEARCH is an option
 - Importance of idempotency might be decision maker
 
 ### PlugREST
 
-- Discuss with interested parties to get started: Johannes, Jaime, Klaus, Matthias, Michael. 
+- Discuss with interested parties to get started: Johannes, Jaime, Klaus, Matthias, Michael.
 - Take lessons learned from WoT Plugfest and ETSI Plugtests
-- Take lessons for IPSO/LWM2M interop?
+- Take lessons from IPSO/LWM2M interop
 - Finish preparation and run PlugREST within T2TRG
 - Extend with WoT TD and try to integrate with WoT Plugfest
 - Appears that thing description can be seen as a result of exploring HATEOAS links of system / device
@@ -326,3 +390,192 @@ Question: should we have compatible "IoT" and "web" worlds or is OK to have app/
 - Contiunue discussions between meetings to avoid diverging
 - Interim definitely before the next IETF -- joint meeting end of January in France?
 
+
+---
+
+Breakout #2: REST
+
+* Methods
+ - what to return in responses beyond GET
+
+ - PUT
+    -
+ - POST: two options: 1) action result (cf representations), 2) if resource state created/updated: 205 with link in headers 3) action result with a link
+
+  - horizontal media types with links in IoT context would be useful.
+    - often needs domain specific information
+
+ - when getting value would like to get also links for the actions to do on that resource; what should be the media type?
+ - can use relation types or media type negotation to find out what is possible; now figuring out what works better with the plugrest exercise
+ - issues e.g., with PUT that's suppose to replace the whole representation
+   - also issues with optional options
+ - e.g. HAL helps here but what should be the media type? hal+json. In the payload data type that supports schema links
+ - Need more experience from plugREST
+
+ - the size of the payloads can be arbitrary large. Should recommend ways to keep reasonable.
+ - useful to have "reverse PATCH" to get only the changed parts with e.g., observe
+ - would be it safe to assume I have sub-resources for all parts of a resource?
+ - need to evaluate different approaches
+
+ - it is dangerous to assume anything from the structure of the Path
+ - URI templates and forms might be a solution for this discovering what is the right path structure
+ - need to learn from the server and should not be assumed by the client
+
+ - want to be able to have either state and links or only one of them; WoT solution: add information to the path (upper level in path hierarchy has links)
+
+ - when implementing plugREST; keep in mind the re-usable parts and make note of them
+
+ - graceful evolution for API design; how to add parameters without breaking backward compatibility for example
+
+ - how to follow links that are discovered. How the metadata about the links is encoded and decided.
+
+ - having fully automated discovery of funcionality and mapping that together may be long term goal but right now we don't seem to have the tools for it
+ - need to incrase learning based on the exercise
+ - what are the tools we have now? CoRE apps draft, RESTful design draft.
+
+
+
+
+* Design patterns
+
+
+
+* PlugFEST/REST practicalities
+ - Code from Johannes et al for w3c plugfest. Mapped against abstract model. Protocol handlers for CoAP & HTTP. Demonstrators for service side (RPi with LED) and Thing Description. More interesting might be base components. All code in github: https://github.com/thingweb/thingweb
+ - Interesting classes to start from: ContentHelper (/util/encoding/ContentHelper.java) and Launcher.java
+ - each subproject ends up in a .jar
+ - Johannes will write a bit of README to help others get started
+
+
+
+## WEDNESDAY, November 4th, 2015
+
+### 1030 Welcome (Carsten)
+Slides: https://www.ietf.org/proceedings/94/slides/slides-94-t2trg-0.pdf
+
+- Summary of the focus of the RG
+- Around 1/3 of the participants have been at the T2TRg meeting in Prague IETF93
+
+- Overview of the W3C IG WoT
+  - Just an example of what's going on there
+  - Frst wave of IoT standards, IoT consortia now forming to build infrastrucutre and industry agreements around those
+
+- One of the questions: Why are we having these silos (devices, gateways)
+  - There are commercial reasons, but there are (may be?) also technical difficulties
+  - Several major considerations
+    - SCALING is one of them - SCALING up, but also SCALING down (to constrained devices)
+    - MANAGEMENT and operation of things
+    - Lifecycle aspects (security, also what happens at the end of life of a device, etc.)
+    - Data formats, semantics, etc. - here are some IETF-specific things to be proposed, also conjoint work with W3C
+  - Operating things that have multiple masters/stakeholders
+
+- What solutions we have?
+  - Looking at web-based principles, e.g. state- (REST) and event- (actions) based approaches
+    - A form of duality exists between the two
+  - Aspects of distribtion - there may be lots of resources, but how do you access them, distribute them, etc. (notons of "fog computing")
+
+- Definition of "benchmark" or reference environments
+  - It is difficult to talk about comparing results if we don't have these reference environments
+  - Useful for plugfests AND research purposes
+- Description of existing/realistic applications (practical, cross-domain, real-world)
+
+- Relationship to IETF WGs
+  - There are 8 WG that work on related issues
+  - The goal is not to replicate what's going at the IETF
+    - T2Trg will of course integrate the concepts developed in these WG, and potentially give feedback
+    - On the long run it could be possible that the T2Trg becomes an IETF WG
+
+- Relationship to IAB
+  - Very useful past workshops
+    - Security
+  - Next year there will be a very useful workshop on semanthic operability (?)Semantic Interoperability
+
+- Naming and organization of the RG
+  - Thing-to-thing is a homage to "end-to-end" RG - and does not exclude device-to-cloud models
+  - open-membership RG (emulate DTNRG, ICNRG)
+  - Regular plugfests, open-source toole, etc.
+
+- Meetings until now
+  - First meeting happened in Dallas
+    - Identified the main areas of interest: applied REST, management protocols, security
+  - Second meeting in Prague @IETF93
+    - First joint meeting with W3C IG WoT
+  - Third meeting - Halloween meeting @IETF94
+    - Joint meeting with W3C
+      - (A) "REST as we know it" -> "Beyond REST"
+      - (B) Security and Lifecycle aspects of constrained devices
+    - Agenda split in talks + breakouts (A) and (B)
+
+- Breakout (A)
+  - Two deliverables:
+    - Cookbook: "RESTful Design for IoT Systems"
+              - design patterns, resource design, etc.
+              - work document: draft-keranen-t2trg-rest-iot (1st version)
+            - "plugRESTs: lessons learned"
+              - scenario document
+              - describes ways to develop hypertext-driven applications
+              - work document: draft-hartke-core-{apps,lighting}
+  - W3C & T2TRG work
+    - W3C WoT IG has 3 task forces: Thing description, discovery, API and protocols
+    - T2TRG: RESTful hypertext driven apps
+    - Sharing experiences and code, github to work on common documents
+    - Next joint plugfest/REST planned for January in southern France
+  - Topics discusssed
+    - Appllication state
+    - (long running) actions with REST - how do you do this?
+    - links, partioal changes for resources
+      - "collections" is a term that comes up oftne
+    - we think we know how to do this, but it helps to build a system like this and document it
+    - Learning from scenarios and plugRESTs
+
+- Track B - security
+  - Ongoing work on challenges, requirements, landscape of means
+  - Security considerations for IoT
+    - starting the work from draft-garcia-core-security-06
+  - Identified main constributors: Sandeep Kuar, Mohit Sethi, Jayarghavendran K, Oliver Pfaff
+  - A book was cited, but it is quite big
+    - Produce a document which is more succsicnt (?)
+  - Cover lifecycle, ownershop, stakeholdes
+  - Recent IESG comments
+    - There is still misunderstanding/confusion and the "Security consideration" section in RFCs needs some help
+
+  Question: Do you consider that official RFCs should reference a document from a RG?
+  Cabo: this will be a guidelines document, ... (?)
+
+  - Another document: security bootstrapping approaches
+    - starting from draft-he-6lo-analysis-iot-sboostrapping-OO
+    - identified main contributors, but more are needed. If you are willing to contribute, please step forward
+
+- Planned next meetings
+  - Jan 25++: Joint meeting with W3C (France)
+  - possibly contribute to IAB workshop on semantic interop
+  - possibly join Apr 12-14 W3C IG WoT
+  - July: @IETF96
+  - August: Worshop at research conference?
+
+  Kevin Fall: on one of your first slide (constrained nodes, devices), maybe the ship has sailed there. However there are many other devices, such as Industrial Internet, which may not be that constrained, but that have some special requirements (real-time comms). Would this be of interest for the charter?
+  Cabo: It is possible. We don't want to do another Car-to-car comm. The "Thing" is the important part here
+  Kevin: What is the "thingness" here? Is the constrained-ness a significant part?
+  Cabo: That's a good point.
+
+  Andrew: Now I'm confused. What Kevin was asking - you have this definition constrained-*. Now we say - ok, it's true that some of the things are not constrained... So now we ask - then this is networking?
+  Kevin: Not that I try to advice you. In 2000 we had sensor networks. And as one years go to the next, devices become less and less constrained. It should be clear that if the choice is to say "constrainnness" is the essence of "Thing", this will lead to a given path, as opposed to real-time
+  Cabo: The number of transistors is not the only thing. The reachability (always on) and some other
+  Andrew: It seems that the risk here is to loose focus. The value to say - you've got these things and limit to them.. (?). ...
+  Cullen: Security provisioning, bootstrapping, etc. is a very specific problem, e.g. Smart Meters have the same problems (and are not constrained). It is a very broad issue covering everything that we've seen until now. I'd see something specific in the charter - this specific problem to solve.
+  Lars: The charters of IRTF are more different than IETF. IRTF is like an advertisement to research community. I wouldn't like to see something that is tightly constrained. I'd like to see something that is more open, and the IRTF gives the chair the choice to restrict the discussins, but the goal is not to recharter after this.
+  Andrew: I agree. We've seen RG that have a too-broad scope for people to focus. People spend too much time arguing what is the problmem.
+  Lars: In the IETF the chairs use the charter to eliminate arguments which are off-scope. In IRTF, we rely on chairs to say - at this point, the group is more focused on this item.
+  Andrew: again, I agree. The thing is, if anyone can say 'oh yes, that's a problem too'. So we must agree on which are the interesting problems
+  Lars: correct
+  Kevin Fall: The idea that this is an advertisment is on the point. If I have a researcher doing real-time controller/automation, can I advertise to him/her? Here we see "constrained" on the first line. I'd like to see "things that interact with the real-world (real-time?), and may be constrained". This way we don't redo 15 years of work.
+  Cabo: ...
+  Cabo: Any other ideas
+  xxx: Are there any concrete plans to .. something with ICN. There are some specific problems with naming
+  Cabo: Yes, there are some common things
+  Jorg Ott: I agree with Lars' suggestion. The RG should be contribution-driven. If we have some controller devices that move some monster things, then OK. It should be inclusive rather than exclusive
+  Ari: I think that we have the opened scope to begin with. So far everything has worked great, and I like this approcah.
+  Cabo: I agree that probably we may make the reference to "physical systems" more visible
+  Mathias: To give input from someone that has been active. For me it was quite clear the goal of this RG. As someone from IoT, moving to Cyberphycial systems, etc. for me it was quite clear. It is something connected to a "thing", which is constrained. Usually we look at architectures. We don't want to work on specific applications, but on architectures.
+  Lars: The group is very active, let me know when you have text. I expect it to be chartered soon.
+  Cabo: I'm afraid we won't have time to do this today.
