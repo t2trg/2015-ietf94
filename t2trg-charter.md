@@ -22,28 +22,29 @@ In parallel, W3C has set up an IG (Interest Group) on the Web of
 Things (WoT); this is operating on a similar timeline as an RG does in
 the IETF.  A parallel activity associated with the IETF can help
 ensure the common work does not stop at the traditional boundaries of
-the W3C but considers networking issues as well; however, IETF WGs are
-more short-term than is required here.
+the W3C but considers networking issues as well.  IETF WGs are also
+active on these topics, but an IRTF RG can provide a more long-term
+perspective to the collaboration.
 
 ## Areas of Interest
 
 A number of areas of interest have been identified:
 
-- Understanding and managing the motivation for single-purpose silos
-   and gateways; facilitating a move towards small pieces loosely
-   joined (hence "thing-to-thing"); scaling the number of applications
-   in a single network
+- Understanding the motivation for single-purpose silos and gateways;
+   facilitating a move towards small pieces loosely joined (hence
+   "thing-to-thing"); enabling scaling the number of applications in a
+   single network
 - Deployment considerations; scaling considerations; cost of
    ownership
 - Management and Operation of Things
 - Lifecycle aspects (including, but not limited to, security
    considerations)
-- Cooperation with W3C, e.g. on data formats and semantics
+- Cooperation with W3C, e.g. on data models, formats, and semantics
 
 More exploratory areas of interest include:
 
 - Operating Things that have multiple masters/stakeholders (including
-  understanding role definitions of devices, owners, operators etc.)
+  understanding role definitions of devices, owners, operators, etc.)
 - Exploring the duality of state- and event-based approaches
 - Aspects of distribution (cf. "fog computing"); reliability and
   scalability considerations
@@ -61,18 +62,26 @@ interest, T2TRG pursues a number of additional objectives:
 * Description of practical, real world, cross domain applications of
     connected Things
 
-* Taxonomy, technology survey and best practice documents
+* Taxonomy, technology survey, and best practice documents
 
 * Fostering collaboration with industry fora and other organizations
-  on networking of things
+  on networking of Things
 
 These objectives will be achieved making use of a close involvement
 between the IETF community and the T2TRG.  For the IETF, some RG
 documents may simplify the generation of (or even serve as) use case
 documents or other informational references.  Close contact will be
-maintained with the IETF's IoT-related WGs and its IoT directorate.
+maintained with the IETF's IoT-related WGs and its IoT directorate, as
+well as related IRTF research groups.
 
-## Name, organization
+## Name, Organization
+
+In the context of this RG, "Thing" refers to a connected object that
+also is defined by its interface to the physical world.  Some Things
+may be connected only using a local interconnect, but the RG's focus
+is on Things that are part of the Internet.  Not all Things are highly
+constrained, but IoT architectures generally need to enable the
+inclusion of constrained nodes.
 
 The name Thing-to-Thing Research Group plays on a reminiscence to the
 End-to-End Research Group, which accompanied the evolution of the
@@ -84,8 +93,9 @@ The charter of the E2E RG mentioned that "the specific topics of
 interest to the E2E RG have changed as network research has advanced,
 but it is generally concerned with end-to-end services and protocols
 implemented in hosts" -- a focus similar to that of the T2TRG, except
-that the concern for packet forwarding and network building is closer
-to a constrained node than it was to a traditional Internet host.
+that the concern for packet forwarding and network building may be
+closer to a constrained node than it was to a traditional Internet
+host.
 
 Also, T2TRG will not be a closed RG, but employ an open membership
 policy towards all interested researchers, taking its clues from the
@@ -94,8 +104,8 @@ way that, say, the DTNRG or the ICNRG have been and are being run.
 ## Meetings
 
 Meetings will often take place co-located with IETF meetings, and/or
-with meetings of related organizations such as W3C IG WoT.
-(Organizing Workshops at Research Conferences is also envisioned.)
+with meetings of related organizations such as W3C WoT IG.
+Organizing Workshops at Research Conferences is also envisioned.
 
 Specific meetings of T2TRG will pick focus items that much of the
 discussion of the meeting should revolve around.  The stated focus for
@@ -103,15 +113,17 @@ the initial meetings was on three immediate areas of interest:
 
 - Management and Operation of networks involving constrained nodes
 - Security and Lifecycle aspects in constrained nodes
-- REST and Pubsub: Exploring the state-event duality
+- REST and pub/sub: Exploring the state-event duality
 
 ## Milestones
+
+(Not part of the permanent charter)
 
 Initially, T2TRG will work on the following work items:
 
 * Documents
-    * Guidance for designing REST-based IoT applications ("cookbook")
-    * Security considerations for the IoT
+    * Guidance for Designing REST-based IoT Applications ("Cookbook")
+    * Security Considerations for the IoT
     * A Survey of Security Bootstrapping Approaches
 * Activities
     * Preparing and running "plugRESTs" (with support from the
