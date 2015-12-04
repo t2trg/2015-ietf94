@@ -31,7 +31,7 @@ Slides: [TBD]
 - 1st Plug fest (10 implementations, many on NodeMCU and RaspPi, but also one for Cortex-M3)
 
 ### 1007-1026 WoT Thing Description (TD) (Sebastian Käbisch)
-Slides: [TBD]
+Slides: https://github.com/t2trg/2015-ietf94/raw/master/slides/10b-w3c_td_overview.pdf
 
 - Motivation (who, what data/function, how to access)
 - Metadata (name, protocol, encoding)
@@ -58,7 +58,7 @@ Slides: [TBD]
 
 ### 1032-1102 Federated Multi-Tenant Service Arch for the IoT (Herb Wildfeuer)
 Draft: https://tools.ietf.org/html/draft-burgess-promise-iot-arch-00.txt <br/>
-Slides: [TBD]
+Slides: https://github.com/t2trg/2015-ietf94/raw/master/slides/11-prez14.pdf
 
 - Overview (see draft abstract)
 - Things as Service Entitites, but tied to physical device (directly on smart thing, gateway with proprietary devices behind, gateway with sensors/actuators on board, transmitter?)
@@ -87,7 +87,8 @@ Slides: [TBD]
       Carsten: In security this is often referred to as "trust"
 ```
 
-### 1120-1230 12 Ari Keränen: https://tools.ietf.org/html/draft-keranen-t2trg-rest-iot-00
+### 1120-1230 12 Ari Keränen: REST for IoT
+Draft: https://tools.ietf.org/html/draft-keranen-t2trg-rest-iot-00 <br/>
 Slides: https://github.com/t2trg/2015-ietf94/raw/master/slides/12-ietf94_t2trg-rest-iot-00.pdf
 
 - Goals of the document (guidance for designing IoT systems, terminology, executive summary)
@@ -190,7 +191,8 @@ Slides: [TBD]
 - Good for reference in security sections of IETF documents
 
 ### 1502-1516 Problems in and among industries for the prompt realization of IoT (Yoshiki Ishida)
-Draft: https://tools.ietf.org/html/draft-baba-iot-problems
+Draft: https://tools.ietf.org/html/draft-baba-iot-problems <br/>
+Slides: https://github.com/t2trg/2015-ietf94/raw/master/slides/15-Challenges-in-and-among-industries-for-the-prompt-IoT.pdf
 
 - Objectives (What are the challenges? ICT vs Things industry)
 - Meeting (interviewed major players)
@@ -228,6 +230,8 @@ Draft: https://tools.ietf.org/html/draft-baba-iot-problems
 ```
 
 ### 1000-1026 Alexander Pelov: COOL update
+Draft out now: https://tools.ietf.org/html/draft-veillette-core-cool-00 <br/>
+Slides: https://github.com/t2trg/2015-ietf94/raw/master/slides/16-ietf94-cool-presentation-short.pdf
 
 - Motivation (manage constrained nodes similar to classic nodes, YANG model)
 - CoOL (hashes, resource arch, Fields option)
@@ -240,6 +244,8 @@ Draft: https://tools.ietf.org/html/draft-baba-iot-problems
 ```
 
 ### 1026-1045 Carsten Bormann: FETCH draft
+Draft: https://tools.ietf.org/html/draft-bormann-core-coap-fetch-00 <br/>
+Slides: https://github.com/t2trg/2015-ietf94/raw/master/slides/17-fetch.pdf
 
 - Queries can become very big, workaround: need to switch to POST, losing GET properties
 - Web tends to use workaround
